@@ -6,11 +6,13 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:15:33 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/01 15:15:38 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/04 18:38:26 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putchar(char c);
 
 void	ft_print_first_line(int colonne)
 {

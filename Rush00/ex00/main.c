@@ -6,11 +6,16 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:43:16 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/01 14:38:37 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/04 18:37:55 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	main(void)
+#include <unistd.h>
+
+void	ft_putchar(char c);
+void	rush(int a, int b);
+
+int	main(void)
 {
 	rush(5, 5);
 	return (0);
