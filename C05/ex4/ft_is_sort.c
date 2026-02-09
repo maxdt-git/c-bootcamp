@@ -1,25 +1,37 @@
-int    ft_is_sort(int *tab, int length, int(*f)(int, int))
-{
-    int    i;
-    int    croi;
-    int    decroi;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/09 09:27:58 by mde-nas           #+#    #+#             */
+/*   Updated: 2026/02/09 11:04:55 by mde-nas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    croi = 1;
-    decroi = 1;
-    if (length <= 1)
-        return (1);
-    while (i < length - 1)
-    {
-        if (f(tab[i], tab[i + 1]) > 0)
-            croi = 0;
-        if (f(tab[i], tab[i + 1]) < 0)
-            decroi = 0;
-        i++;
-    }
-    if (croi == 1 || decroi == 1)
-        return (1);
-    return (0);
+int	ft_is_sort(int *tab, int length, int (*f)(int, int))
+{
+	int	i;
+	int	croi;
+	int	decroi;
+
+	i = 0;
+	croi = 1;
+	decroi = 1;
+	if (length <= 1)
+		return (1);
+	while (i < length - 1)
+	{
+		if (f(tab[i], tab[i + 1]) > 0)
+			croi = 0;
+		if (f(tab[i], tab[i + 1]) < 0)
+			decroi = 0;
+		i++;
+	}
+	if (croi == 1 || decroi == 1)
+		return (1);
+	return (0);
 }
 /*
 #include <stdio.h>
