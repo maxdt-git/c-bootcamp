@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_col.c                                     :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmonnier <mmonnier@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 13:50:14 by mmonnier          #+#    #+#             */
-/*   Updated: 2026/02/07 15:02:38 by jbrodusc         ###   ########.fr       */
+/*   Created: 2026/02/08 15:19:12 by mmonnier          #+#    #+#             */
+/*   Updated: 2026/02/08 15:19:21 by mmonnier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	validate_view(int view, int grid[4])
 {
-	int		viewed;
-	int		highest;
-	int		i;
+	int	viewed;
+	int	highest;
+	int	i;
 
 	viewed = 1;
 	highest = grid[0];
@@ -33,33 +33,38 @@ int	validate_view(int view, int grid[4])
 	return (0);
 }
 
-int	validate_col(int *views, int grid[4][4], int col)
+int	validate_col(int *views, int **grid, int col)
 {
-	int		reversegrid[4];
-	int		col_grid[4];
-	int		row;
-	int		j;
+	int	reversegrid[4];
+	int	col_grid[4];
+	int	row;
+	int	j;
 
 	row = 0;
 	j = 0;
-	while (idx < 4)
+	while (j < 4)
 	{
-		col_grid[j] = grid[idx][col];
+		col_grid[j] = grid[j][col];
 		reversegrid[j] = grid[3 - row][col];
 		row++;
 		j++;
 	}
-	if (validate_view(views[col], col_grid)
-		&& validate_view(views[col + 4], reversegrid))
+	if ((validate_view(views[col], col_grid)
+			&& validate_view(views[col + 4], reversegrid)))
 		return (1);
 	return (0);
 }
 
-// int main()
-// {
-// 	int i;
-// 	i = 0;
-// 	int views[16] = {4,3,2,1,1,2,2,2,4,3,2,1,1,2,2};
-// 	int grid[4][4] = {{1,2,3,4}, {1,2,3,4}, {1,2,3,4}, {1,2,3,4}};
-// 	printf("\n%d", validate_row(views, grid, i));
-// }
+int	validate_row(int *views, int **grid, int row)
+{
+	int	reversegrid[4];
+
+	reversegrid[0] = grid[row][3];
+	reversegrid[1] = grid[row][2];
+	reversegrid[2] = grid[row][1];
+	reversegrid[3] = grid[row][0];
+	if ((validate_view(views[row + 8], grid[row])
+			&& validate_view(views[row + 12], reversegrid)))
+		return (1);
+	return (0);
+}

@@ -12,11 +12,11 @@
 
 #include <unistd.h>
 
-void	print_tab(int grid[4][4])
+void	print_tab(int **grid)
 {
-	int	a;
-	int	i;
-	int	j;
+	char	a;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < 4)

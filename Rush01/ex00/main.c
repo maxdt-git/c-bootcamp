@@ -6,12 +6,14 @@
 /*   By: jbrodusc <jbrodusc@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 11:39:39 by jbrodusc          #+#    #+#             */
-/*   Updated: 2026/02/07 16:10:44 by jbrodusc         ###   ########.fr       */
+/*   Updated: 2026/02/08 15:47:21 by jbrodusc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+
+void	fill_grid_zero(int *views);
 
 int	ft_strlen(char *str)
 {
@@ -100,5 +102,6 @@ int	main(int argc, char **argv)
 	views = convert_arg(argv[1]);
 	if (check_views(views) != 1)
 		return (1);
+	fill_grid_zero(views);
 	return (0);
 }

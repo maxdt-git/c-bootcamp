@@ -1,80 +1,114 @@
-// 
-// fill grid with 0
-// row = 0, col = 0
-// index = 0
-// nb_to_place = 1
-// 
-// si index == 15 -> print()
-//
-// tant que row contient des 0
-// |
-// grid[col][row] = nb_to_place
-// si is_duplicate -> nb_to place + 1; -> recursive(views[16], grid[4][4], index, nbtoplace)
-// si nombre place -> index + 1; row +1 
-// 
-// quand row ne contient pas de 0;
-// |
-//  validate_row
-// if validate ----> recursive col + 1; 
-// else set all to 0; recursive nb_to_place = 2
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   place_in_grid.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmonnier <mmonnier@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 15:33:14 by mmonnier          #+#    #+#             */
+/*   Updated: 2026/02/08 15:40:04 by mmonnier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int fill_row_zero(int grid[4][4], int row)
+#include <stdlib.h>
+#include <unistd.h>
+
+int		validate_row(int *views, int **grid, int row);
+int		validate_col(int *views, int **grid, int col);
+int		is_duplicate(int n, int **grid, int row, int col);
+void	print_tab(int **grid);
+
+int	check_final_grid(int **grid)
 {
-	int i;
-	i = 0;
+	int		i;
+	int		j;
 
-	while(i < 4)
+	i = 0;
+	while (i < 4)
 	{
-		grid[row][i] = 0;
+		j = 0;
+		while (j < 4)
+		{
+			if (grid[i][j] == 0)
+				return (0);
+			j++;
+		}
 		i++;
 	}
+	return (1);
 }
 
-int fill_recursive(int *views, int grid[4][4], int index, int nbtoplace)
+int	checks(int *views, int **grid, int row, int col)
 {
-	int row;
-	int col;
+	if (!(grid[row][0] == 0 || grid[row][1] == 0
+		|| grid[row][2] == 0 || grid[row][3] == 0))
+	{
+		if (!validate_row(views, grid, row))
+		{
+			return (0);
+		}
+	}
+	if (!(grid[0][col] == 0 || grid[1][col] == 0
+		|| grid[2][col] == 0 || grid[3][col] == 0))
+	{
+		if (!validate_col(views, grid, col))
+		{
+			return (0);
+		}
+	}
+	return (1);
+}
+
+int	fill_recursive(int *views, int **grid, int index)
+{
+	int	row;
+	int	col;
+	int	nbtoplace;
 
 	row = index / 4;
 	col = index % 4;
-
-	if(nbtoplace > 4)
-		nbtoplace = 1;
-
-	if(index == 16)
-		printf("DONE");
-
-	while(grid[row][0] == 0 || grid[row][1] == 0 || grid[row][2] == 0 || grid[row][3] == 0)
+	nbtoplace = 1;
+	if (index == 16)
+		return (1);
+	while (nbtoplace <= 4)
 	{
 		grid[row][col] = nbtoplace;
-		if(is_duplicate())
-		// faire tests ici // return 0 if false //
-		col++;
+		if (!is_duplicate(nbtoplace, grid, row, col))
+		{
+			if (checks(views, grid, row, col))
+			{
+				if (fill_recursive(views, grid, index + 1))
+					return (1);
+			}
+		}
+		grid[row][col] = 0;
 		nbtoplace++;
 	}
-	if(!validate_row(views, grid, row))
-		fill_recursive(views, grid, index + 1, nbtoplace);
+	return (0);
 }
 
-int fill_grid(int *views, int grid[4][4])
+void	fill_grid(int *views, int **grid)
 {
-	int index = 0;
-	int nbtoplace = 1;
-	fill_recursive(views, grid, index, nbtoplace);
+	int	index;
 
+	index = 0;
+	fill_recursive(views, grid, index);
 }
 
-int	fill_grid_zero(int *views)
+void	fill_grid_zero(int *views)
 {
-	intj = 0;
-	int  i = 0;
-	int grid[4][4];
+	int	j;
+	int	i;
+	int	**grid;
 
-	while(i < 4)
+	j = 0;
+	i = 0;
+	grid = malloc(sizeof(int *) * 4);
+	while (i < 4)
 	{
+		grid[i] = malloc(sizeof(int) * 4);
 		j = 0;
-		while(j < 4)
+		while (j < 4)
 		{
 			grid[i][j] = 0;
 			j++;
@@ -82,10 +116,8 @@ int	fill_grid_zero(int *views)
 		i++;
 	}
 	fill_grid(views, grid);
-}
-
-int main()
-{
-	int views[16] = {1,2,3,1,2,3,1,1,1,1,1,1,1,1,1,1};
-	fill_grid_zero(views);
+	if (check_final_grid(grid))
+		print_tab(grid);
+	else
+		write(2, "Error\n", 6);
 }
