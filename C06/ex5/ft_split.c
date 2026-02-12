@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 13:10:30 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/12 12:54:32 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/12 17:44:00 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*copy_words(char *str, char *charset)
 	while (str[i] && !check_sep(str[i], charset))
 		i++;
 	word = malloc(sizeof(char) * (i + 1));
+	if (!word)
+		return (NULL);
 	i = 0;
 	while (str[i] && !check_sep(str[i], charset))
 	{
@@ -79,14 +81,17 @@ char	**ft_split(char *str, char *charset)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str[i] && check_sep(str[i], charset))
-		i++;
-	if (str[i] && !check_sep(str[i], charset))
+	while (str[i])
 	{
-		tab_final[j] = copy_words(&str[i], charset);
-		j++;
-		while (str[i] && !check_sep(str[i], charset))
+		while (str[i] && check_sep(str[i], charset))
 			i++;
+		if (str[i] && !check_sep(str[i], charset))
+		{
+			tab_final[j] = copy_words(&str[i], charset);
+			j++;
+			while (str[i] && !check_sep(str[i], charset))
+				i++;
+		}
 	}
 	tab_final[j] = NULL;
 	return (tab_final);
