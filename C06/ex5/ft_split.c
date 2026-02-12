@@ -6,13 +6,13 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 13:10:30 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/12 11:44:13 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/12 12:54:32 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	check_sep(char *str, char test)
+int	check_sep(char test, char *str)
 {
 	int	i;
 
@@ -30,22 +30,27 @@ int	count_words(char *str, char *charset)
 {
 	int	i;
 	int	words;
-	
+
 	i = 0;
 	words = 0;
 	while (str[i])
 	{
-		if (!check_sep(str[i], charset) && (i == 0 || check_sep([stri - 1], charset)))
+		while (str[i] && check_sep(str[i], charset))
+			i++;
+		if (str[i] && !check_sep(str[i], charset))
+		{
 			words++;
-		i++;
+			while (str[i] && !check_sep(str[i], charset))
+				i++;
+		}
 	}
 	return (words);
 }
 
-char	*copy_words(char *str)
+char	*copy_words(char *str, char *charset)
 {
 	char	*word;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i] && !check_sep(str[i], charset))
@@ -60,12 +65,12 @@ char	*copy_words(char *str)
 	word[i] = '\0';
 	return (word);
 }
-		
-void	**ft_split(char *str, char *charset)
+
+char	**ft_split(char *str, char *charset)
 {
 	char	**tab_final;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	if (!str)
 		return (NULL);
@@ -78,25 +83,29 @@ void	**ft_split(char *str, char *charset)
 		i++;
 	if (str[i] && !check_sep(str[i], charset))
 	{
-		tab_final = copy_words(str[i]);
-		i++;
+		tab_final[j] = copy_words(&str[i], charset);
+		j++;
 		while (str[i] && !check_sep(str[i], charset))
 			i++;
 	}
-	tab_final[i] = '\0';
+	tab_final[j] = NULL;
 	return (tab_final);
 }
 /*
 #include <stdio.h>
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	char **arr;
+	char	**tab;
+	int	i;
 
- 	char *phrase = "   Hello,   Flavio\t Wuensche!  ";
- 	arr = ft_split(phrase);
- 	printf("%s\n", arr[0]);
- 	printf("%s\n", arr[1]);
- 	printf("%s\n", arr[2]);
- 	printf("%s\n", arr[3]);
- }
+	i = 0;
+	tab = ft_split("Salut, moi c'est Max", " ,");
+	if (!tab)
+		return (0);
+	while (tab[i])
+	{
+		printf("Mot %d : %s\n", i, tab[i]);
+		i++;
+	}
+}*/
