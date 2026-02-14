@@ -1,46 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 15:46:49 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/10 17:18:48 by mde-nas          ###   ########.fr       */
+/*   Created: 2026/02/14 16:58:31 by mde-nas           #+#    #+#             */
+/*   Updated: 2026/02/14 17:51:42 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	rtr;
-	int	sign;
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	rtr = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-			i++;
-	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
+	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		rtr = (rtr * 10) + (str[i] - '0');
-		i++;
-	}
-	return (sign * rtr);
+	return (s1[i] - s2[i]);
 }
 /*
 #include <stdio.h>
 
-int	main(void)
+int     main(void)
 {
-	char	*str;
-	str = "  --+-1234ab567";
-	printf("%d\n", ft_atoi(str));
-	return (0);
+        char    s1[] = "salut ca va";
+        char    s2[] = "salut cq va";
+
+        printf("%d\n", ft_strncmp(s1, s2, 8));
+        return (0);
 }*/
