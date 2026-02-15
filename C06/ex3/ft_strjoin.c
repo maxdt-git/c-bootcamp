@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:34:55 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/12 17:44:25 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/15 17:13:39 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,44 @@ int	ft_total_length(int size, char **strs, char *sep)
 	return (total);
 }
 
-void	ft_concat(char *dst, char *src, int *k)
+int	ft_concat(char *dst, char *src, int deb)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (src[j])
+	i = 0;
+	while (src[i])
 	{
-		dst[(*k)++] = src[j++];
+		dst[deb + i] = src[i];
+		i++;
 	}
+	return (deb + i);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
-	int		k;
+	int		j;
 	char	*tab;
 
 	if (size == 0)
-		return (malloc(1));
+	{
+		tab = malloc(1);
+		tab[size] = '\0';
+		return (tab);
+	}
 	tab = malloc(sizeof(char) * (ft_total_length(size, strs, sep)));
-	if (tab == 0)
+	if (!tab)
 		return (NULL);
 	i = 0;
-	k = 0;
+	j = 0;
 	while (i < size)
 	{
-		ft_concat(tab, strs[i], &k);
+		j = ft_concat(tab, strs[i], j);
 		if (i < size - 1)
-			ft_concat(tab, sep, &k);
+			j = ft_concat(tab, sep, j);
 		i++;
 	}
-	tab[k] = '\0';
+	tab[j] = '\0';
 	return (tab);
 }
 /*
@@ -77,7 +83,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 int	main(void)
 {
-	char *tab[] = {"Coucou", "ca va", "ouais et toi"};
-	printf("%s\n", ft_strjoin(3, tab, ", , ")); 
+	char *tab[] = {""};
+	printf("%s\n", ft_strjoin(0, tab, ", , ")); 
 
 }*/

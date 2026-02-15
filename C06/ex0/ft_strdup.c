@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 12:52:37 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/09 15:29:26 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/15 13:20:22 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	*ft_strdup(char *src)
 	int		i;
 	char	*tab;
 
-	if (src == NULL)
+	if (!src)
 		return (NULL);
 	i = 0;
 	while (src[i])
 		i++;
 	tab = malloc(sizeof(char) * (i + 1));
-	if (tab == NULL)
+	if (!tab)
 		return (NULL);
 	i = 0;
 	while (src[i])

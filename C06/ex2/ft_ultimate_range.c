@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 16:46:10 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/09 18:11:21 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/15 15:20:44 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	if (min >= max)
 	{
 		*range = NULL;
-		return (-1);
+		return (0);
 	}
 	*range = malloc(sizeof(int) * (max - min));
 	if (range == 0)
@@ -41,7 +41,7 @@ int     main(void)
         int     *tab;
 	int	size;
 
-        size = ft_ultimate_range(&tab, 5, 15);
+        size = ft_ultimate_range(&tab, 24, 12);
         if (size <= 0)
                 return (1);
         printf("%d\n", size);
