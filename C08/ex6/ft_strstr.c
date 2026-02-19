@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 10:24:11 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/16 14:15:33 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/18 16:43:42 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ char	*ft_strstr(char *str, char *to_find)
 
 int     main(void)
 {
-        char    s1[] = "salut ca va";
+        char    s1[] = "salutation toi yes";
 
-        printf("%s\n", ft_strstr(s1, "ca"));
+        printf("%s\n", ft_strstr(s1, "hdj"));
         return (0);
 }*/

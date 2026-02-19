@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 13:56:51 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/18 15:33:58 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/19 11:38:55 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-
+/*
 int	main(int ac, char **av)
 {
 	int	i;
@@ -36,4 +36,27 @@ int	main(int ac, char **av)
 		}
 	}
 	ft_putchar('\n');
+}
+*/
+
+int	main(int ac, char **av)
+{
+	int	i;
+	char	*rot;
+	char	*rotM;
+
+	i = 0;
+	rot = "nopqrstuvwxyzabcdefghijklm";
+	rotM = "NOPQRSTUVWXYZABCDEFGHIJKLM";
+	if (ac < 2)
+		return (0);
+	while (av[1][i])
+	{
+		if (av[1][i] >= 'a' && av[1][i] <= 'z')
+			ft_putchar(rot[av[1][i] - 'a']);
+		if (av[1][i] >= 'A' && av[1][i] <= 'Z')
+			ft_putchar(rotM[av[1][i] - 'A']);
+		i++;
+	}
+	return (0);
 }

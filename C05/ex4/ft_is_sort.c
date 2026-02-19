@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 09:27:58 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/09 11:04:55 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/10 18:10:38 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int main(void)
     int b[] = {5, 4, 3, 2, 1};
     int c[] = {1, 3, 2, 4, 5};
     int d[] = {2, 2, 2, 2};
-    int e[] = {1};
+    int e[] = {};
 
     printf("a: %d\n", ft_is_sort(a, 5, soustraction));
     printf("b: %d\n", ft_is_sort(b, 5, soustraction));
     printf("c: %d\n", ft_is_sort(c, 5, soustraction));
     printf("d: %d\n", ft_is_sort(d, 4, soustraction));
-    printf("e: %d\n", ft_is_sort(e, 1, soustraction));
+    printf("e: %d\n", ft_is_sort(e, 0, soustraction));
 
     return (0);
 }*/

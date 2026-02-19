@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 12:07:38 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/02/04 17:54:40 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/05 09:40:59 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ char	*ft_strcapitalize(char *str)
 
 int     main(void)
 {
-        char str[] = "dIh dbUE76J 4e34fdc sd wetw r ";
+        char str[] = "dIh dbU*(E76J 4e34fdc sd wetw r ";
         printf("%s\n", ft_strcapitalize(str));
 }*/

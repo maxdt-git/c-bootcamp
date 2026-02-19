@@ -6,7 +6,7 @@
 /*   By: mde-nas <mde-nas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:20:30 by mde-nas           #+#    #+#             */
-/*   Updated: 2026/01/29 12:14:59 by mde-nas          ###   ########.fr       */
+/*   Updated: 2026/02/03 17:32:17 by mde-nas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb % 10);
 	}
 }
-
 /*
 int main(void)
 {
@@ -54,5 +53,4 @@ int main(void)
 	ft_putchar('\n');
 	ft_putnbr(3545);
 	ft_putchar('\n');
-}
-*/
+}*/
