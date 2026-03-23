@@ -85,69 +85,15 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int_to_string(result, num_convert, base_to, base_to_len);
 	return (result);
 }
-/*
+
 #include <stdio.h>
 
 int	main(void)
 {
 	char	*result;
 
-	// Test 1: Décimal vers binaire
-    result = ft_convert_base("42", "0123456789", "01");
-    printf("Test 1: 42 (base 10) -> binaire = %s\n", result);
+    result = ft_convert_base("42", "012345lahn", "01lzajr");
+    printf("Test 1: 42 (base 10) -> hexa = %s\n", result);
     free(result);
-
-    // Test 2: vers décimal
-    result = ft_convert_base("10101ASDQE0", "01", "0123456789");
-    printf("Test 2: 10101ASDQE0 (base 2) -> decimal = %s\n", result);
-    free(result);
-
-    // Test 3: Décimal vers hexadécimal
-    result = ft_convert_base("255", "0123456789", "0123456789ABCDEF");
-    printf("Test 3: 255 (base 10) -> hexadecimal = %s\n", result);
-    free(result);
-
-    // Test 4: Hexadécimal vers décimal
-    result = ft_convert_base("FF", "0123456789ABCDEF", "0123456789");
-    printf("Test 4: FF (base 16) -> decimal = %s\n", result);
-    free(result);
-
-    // Test 5: Nombre négatif
-    result = ft_convert_base("-42", "0123456789", "01");
-    printf("Test 5: -42 (base 10) -> binaire = %s\n", result);
-    free(result);
-
-    // Test 6: Base personnalisée (poneyvif)
-    result = ft_convert_base("42", "0123456789", "poneyvif");
-    printf("Test 6: 42 (base 10) -> base poneyvif = %s\n", result);
-    free(result);
-
-    // Test 7: Base invalide (caractères dupliqués)
-    result = ft_convert_base("42", "0123456789", "0123456789A0");
-    if (result == NULL)
-        printf("Test 7: Base invalide (doublons) -> NULL \n");
-    else
-        printf("Test 7: ERREUR - devrait retourner NULL\n");
-
-    // Test 8: Base invalide (contient '+')
-    result = ft_convert_base("42", "0123456789", "01+");
-    if (result == NULL)
-        printf("Test 8: Base invalide (contient '+') -> NULL \n");
-    else
-        printf("Test 8: ERREUR - devrait retourner NULL\n");
-
-    // Test 9: Base trop petite
-    result = ft_convert_base("42", "0123456789", "0");
-    if (result == NULL)
-        printf("Test 9: Base invalide (1 seul caractère) -> NULL \n");
-    else
-        printf("Test 9: ERREUR - devrait retourner NULL\n");
-
-    // Test 10: Zéro
-    result = ft_convert_base("0", "0123456789", "01");
-    printf("Test 10: 0 (base 10) -> binaire = %s\n", result);
-    free(result);
-
-    return (0);
-
-}*/
+}
+  
