@@ -9,4 +9,3 @@ Exercises from an intensive four-week C and Unix bootcamp, written under strict 
 | `Shell00` – `Shell02` | Unix basics, permissions, archives, Git, shell scripting with `find` |
 | `C00` – `C09` | Pointers, strings, recursion, memory allocation, command-line arguments, headers, Makefiles |
 | `Rush00`, `Rush01` | Weekend team projects (ASCII rendering, constraint-solving puzzle) |
-| `Revision` | Timed exam practice (strings, recursion, `split`, `atoi`) |
